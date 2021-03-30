@@ -25,14 +25,13 @@
 	}
   </style>
   </head>
-  <body > 
-  <div class="container d-flex justify-content-center"><h1>Dymmy website ticket app</h1></div>
-	<div class="container d-flex align-items-center justify-content-center" style="height: 90%">
+  <body class="bg-secondary bg-gradient"> 
+  <div class="container d-flex justify-content-center"><h4 class="text-light">Dymmy website ticket app</h4></div>
+	<div class="container d-flex align-items-center justify-content-center" style="height: 50%">
 		<button class="btn btn-dark btn-image btn-background" onclick="executeLink('http://settle.eu/s/kzjXc/paat79t5vvye')">Pay with Settle</button>
 	</div>
     <script>
 	 function executeLink(link) {
-	 alert(link)
 		window.ReactNativeWebView.postMessage(link)
 	 }
     </script>
