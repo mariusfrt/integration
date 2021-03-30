@@ -1,10 +1,35 @@
 <html>
-  <head><p>Test</p></head>
+  <head>
+  <title>Webview Integration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+	.btn-image:before {
+		content: "";
+		width: 25px;
+		height: 25px;
+		display: inline-block;
+		margin-right: 5px;
+		vertical-align: middle;
+		background-color: transparent;
+		background-position : center center;
+		background-repeat:no-repeat;
+	}
+	.btn-background:before{
+		background-image : url(https://storage.googleapis.com/settle-core-prod-kh1suzlc_ads/settle-logo.png);
+		background-size: 25px 25px;
+	}
+  </style>
+  </head>
   <body>
+	<div class="container d-flex align-items-center justify-content-center" style="height: 100%">
+		<button class="btn btn-dark btn-image btn-background" onclick="executeLink('http://settle.eu/s/Hul01/p4vaascnsxkb')">Pay with Settle</button>
+	</div>
     <script>
-      setTimeout(function () {
-        window.ReactNativeWebView.postMessage("http://settle.eu/s/Hul01/p4vaascnsxkb")
-      }, 2000)
+	 function executeLink(link) {
+		window.ReactNativeWebView.postMessage(link)
+	 }
     </script>
   </body>
   </html>
