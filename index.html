@@ -45,7 +45,7 @@
 			type: 'shortlink',
 			value: link
 		}
-		window.ReactNativeWebView.postMessage(message);
+		window.ReactNativeWebView.postMessage(JSON.stringify(message));
 	 }
     </script>
   </body>
