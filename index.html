@@ -26,13 +26,26 @@
   </style>
   </head>
   <body class="bg-secondary bg-gradient"> 
-  <div class="container d-flex justify-content-center"><h4 class="text-light mt-4">Dymmy website ticket app</h4></div>
 	<div class="container d-flex align-items-center justify-content-center" style="height: 50%">
-		<button class="btn btn-dark btn-image btn-background" onclick="executeLink('http://settle.eu/s/cjIxC/payment/')">Pay with Settle</button>
+		<form onsubmit='executeLink(event)'>
+		  <div class="form-group">
+			<label for="shortlinkInput" class="text-light">Payment Shortlink</label>
+			<input class="form-control" id="shortlinkInput" aria-describedby="shortlinkHelp" placeholder="Enter shortlink" value="http://settle.eu/s/cjIxC/payment/" required>
+			<small id="shortlinkHelp" class="form-text text-muted">Shortlink to be used to trigger a payment request.</small>
+		  </div>
+		 <button type="submit" class="btn btn-dark btn-image btn-background">Pay with Settle</button>
+		</form>
+		
 	</div>
     <script>
-	 function executeLink(link) {
-		window.ReactNativeWebView.postMessage(link)
+	 function executeLink(event) {
+		event.preventDefault()
+		var link = document.getElementById("shortlinkInput").value;
+		var message = {
+			type: 'shortlink',
+			value: link
+		}
+		window.ReactNativeWebView.postMessage(message);
 	 }
     </script>
   </body>
