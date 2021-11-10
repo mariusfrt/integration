@@ -26,17 +26,32 @@
   </style>
   </head>
   <body class="bg-secondary bg-gradient"> 
-	<div class="container d-flex align-items-center justify-content-center" style="height: 50%">
-		<form onsubmit='executeLink(event)'>
-		  <div class="form-group">
-			<label for="shortlinkInput" class="text-light">Payment Shortlink</label>
-			<input class="form-control" id="shortlinkInput" aria-describedby="shortlinkHelp" placeholder="Enter shortlink" value="http://settle.eu/s/cjIxC/payment/" required>
-			<small id="shortlinkHelp" class="form-text text-muted">Shortlink to be used to trigger a payment request.</small>
-		  </div>
-		 <button type="submit" class="btn btn-dark btn-image btn-background">Pay with Settle</button>
-		</form>
-		
-	</div>
+    <div class="container d-flex flex-column align-items-left justify-content-center" style="height: 50%">
+        <div >
+            <form onsubmit='executeLink(event)'>
+                <div class="form-group">
+                  <label for="shortlinkInput" class="text-light">Payment Shortlink</label>
+                  <input class="form-control" id="shortlinkInput" aria-describedby="shortlinkHelp" placeholder="Enter shortlink" value="http://settle.eu/s/cjIxC/payment/" required>
+                  <small id="shortlinkHelp" class="form-text text-muted">Shortlink to be used to trigger a payment request.</small>
+                </div>
+               <button type="submit" class="btn btn-dark btn-image btn-background">Pay with Settle</button>
+              </form>
+              <br/>
+        </div>
+        <div class="divider py-1 bg-dark"></div>
+		<div >
+            <br/>
+            <br/>
+            <form onsubmit='clickLink(event)'>
+                <div class="form-group">
+                  <label for="dynamicLinkInput" class="text-light">Dynamic Link</label>
+                  <input class="form-control" id="dynamicLinkInput" aria-describedby="dynamicLinkHelp" placeholder="Enter dynamic link" value="https://settleqa.page.link/?apn=io.auka.aukasales.qa&ibi=io.auka.aukasales.qa&isi=1402708733&ius=eu.settle.app.firebaselink&link=https%3A%2F%2Fsettle-qa%3A%2F%2Fqr%2Fhttp%3A%2F%2Fsettle.eu%2Fp%2Fp01kfs5050dr%2F" required>
+                  <small id="dynamicLinkHelp" class="form-text text-muted">Dynamic link to trigger Settle</small>
+                </div>
+               <button type="submit" class="btn btn-dark btn-image btn-background">Open Settle</button>
+              </form>
+        </div>
+    </div>
     <script>
 	 function executeLink(event) {
 		event.preventDefault()
@@ -46,6 +61,11 @@
 			value: link
 		}
 		window.ReactNativeWebView.postMessage(JSON.stringify(message));
+     }
+     function clickLink(event) {
+        var link = document.getElementById("dynamicLinkInput").value;
+       
+		window.location.href = link
 	 }
     </script>
   </body>
